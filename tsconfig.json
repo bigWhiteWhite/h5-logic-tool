@@ -28,6 +28,6 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src", "rollup.config"]
+  "include": ["src"]
 }
 

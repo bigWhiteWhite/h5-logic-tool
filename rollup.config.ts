@@ -22,8 +22,8 @@ const plugins = [
 		}
 	}),
 	json(),
-	cleanup(),
 	builtins(),
+	cleanup(),
 	sourcemaps(),
 	babel({
 		exclude: ['node_modules/**'],
