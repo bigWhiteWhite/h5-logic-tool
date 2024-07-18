@@ -1,6 +1,6 @@
 {
 	"name": "h5-logic-tool",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "h5-logic-tool",
 	"main": "./dist/index.cjs.js",
 	"module": "./dist/index.esm.js",
@@ -45,8 +45,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^8.16.0",
-
-    "eslint-config-prettier": "^8.5.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"prettier": "^3.3.3",
 		"rimraf": "^6.0.1"
