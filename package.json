@@ -1,0 +1,54 @@
+{
+	"name": "h5-logic-tool",
+	"version": "1.0.0",
+	"description": "h5-logic-tool",
+	"main": "./dist/index.cjs.js",
+	"module": "./dist/index.esm.js",
+	"types": "./dist/types/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"private": false,
+	"scripts": {
+		"dev": "rollup -w -c",
+		"build:types": "tsc -b ./tsconfig.json",
+		"build": "npm run build:types && rollup -c",
+		"prepublish": "pnpm version && pnpm build",
+		"lint": "eslint 'src/**/*.{js,ts}'",
+		"format": "prettier --write 'src/**/*.{js,ts,json,css}'"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bigWhiteWhite/h5-logic-tool.git"
+	},
+	"keywords": [
+		"utils"
+	],
+	"author": "bigWhiteWhite",
+	"license": "ISC",
+	"publishConfig": {
+		"access": "public"
+	},
+	"bugs": {
+		"url": "https://github.com/bigWhiteWhite/h5-logic-tool/issues"
+	},
+	"homepage": "https://github.com/bigWhiteWhite/h5-logic-tool#readme",
+	"dependencies": {
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"rollup": "^4.18.1",
+		"rollup-plugin-cleanup": "^3.2.1",
+		"rollup-plugin-terser": "^7.0.2",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
+	},
+	"devDependencies": {
+		"eslint": "^8.16.0",
+
+    "eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"prettier": "^3.3.3",
+		"rimraf": "^6.0.1"
+	}
+}
