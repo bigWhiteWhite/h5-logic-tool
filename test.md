@@ -1,3 +1,10 @@
+**rollup.config.mjs**
+
+```powershell
+"build:rollup-dev": "rollup -c --environment BUILD_ENV:dev",
+```
+
+```js
 import { defineConfig } from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
@@ -51,3 +58,5 @@ export default defineConfig([
         plugins,
     }
 ])
+```
+

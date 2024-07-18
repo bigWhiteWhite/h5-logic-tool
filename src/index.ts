@@ -1,7 +1,7 @@
 import { getWebPageContent } from './service/apis'
 
 // 动态导入 import('@utils/test').then(({ hhh }) => hhh('foo'))
-export const testLog = async (content: string) => {
+export const testLog = async () => {
 	try {
 		const message = await getWebPageContent({
 			pageType: 'privacyPolicy'
@@ -11,4 +11,3 @@ export const testLog = async (content: string) => {
 		return Promise.reject(error)
 	}
 }
-testLog('123')
