@@ -1,7 +1,5 @@
 import { getWebPageContent } from './service/apis'
 
-import axios from 'axios'
-
 // 动态导入 import('@utils/test').then(({ hhh }) => hhh('foo'))
 export const testLog = async (content: string) => {
 	try {

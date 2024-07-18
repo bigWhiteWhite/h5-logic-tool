@@ -20,8 +20,7 @@ class Request {
 			(config) => {
 				return {
 					...config,
-					url: 'https://mediator-test.sicicash.com',
-					baseURL: 'observer',
+					baseURL: '/guidance',
 					headers: {
 						ProxyChannel: 'H5',
 						App_id: 'com.si.ci.xx.qq',
