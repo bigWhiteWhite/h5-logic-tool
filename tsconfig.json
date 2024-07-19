@@ -28,6 +28,7 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "lib", "test"]
 }
 
