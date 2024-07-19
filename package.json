@@ -1,6 +1,6 @@
 {
 	"name": "h5-logic-tool",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "h5-logic-tool",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm.js",
@@ -12,17 +12,15 @@
 	],
 	"private": false,
 	"scripts": {
-		"log": "node -e require('./dist/index.cjs.js')",
 		"dev": "rollup -w -c --environment BUILD_ENV:dev",
 		"build:types": "tsc -b ./tsconfig.json",
 		"build:rollup-dev": "rollup -c --environment BUILD_ENV:dev",
 		"build:rollup-prod": "rollup -c --environment BUILD_ENV:prod",
-		"build:dev": "npm run build:types && npm run build:rollup-dev",
-		"build:prod": "npm run build:types && npm run build:rollup-prod",
-		"prepublish": "pnpm version && pnpm build",
+		"build:dev": "pnpm run build:types && pnpm run build:rollup-dev",
+		"build:prod": "pnpm run build:types && pnpm run build:rollup-prod",
 		"lint": "eslint 'src/**/*.{js,ts}'",
 		"prettier": "prettier --write 'src/**/*.{js,ts,json,css}'",
-		"test": "jest aaa.test",
+		"test": "jest index.test",
 		"test:coveralls": "jest --coverage"
 	},
 	"repository": {

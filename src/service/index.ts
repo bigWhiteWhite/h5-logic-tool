@@ -6,7 +6,6 @@ const $https = new Request({
 	timeout: 100000,
 	interceptors: {
 		requestInterceptor: (config: RequestConfig) => {
-			console.log('🚀 ~ config:', config)
 			return config
 		},
 		requestInterceptorsCatch: (err) => {

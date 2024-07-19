@@ -11,12 +11,12 @@ class Request {
 		this.instance = axios.create(config)
 		this.interceptors = config.interceptors
 		// 实例特有的拦截器
-		this.instance.interceptors.request.use(this.interceptors?.requestInterceptor, this.interceptors?.requestInterceptorsCatch)
+		this.instance?.interceptors.request.use(this.interceptors?.requestInterceptor, this.interceptors?.requestInterceptorsCatch)
 
-		this.instance.interceptors.response.use(this.interceptors?.responseInterceptor, this.interceptors?.responseInterceptorsCatch)
+		this.instance?.interceptors.response.use(this.interceptors?.responseInterceptor, this.interceptors?.responseInterceptorsCatch)
 
 		// 全局通用的拦截器,每一个实例都有
-		this.instance.interceptors.request.use(
+		this.instance?.interceptors.request.use(
 			(config) => {
 				return {
 					...config,
@@ -37,7 +37,7 @@ class Request {
 				return err
 			}
 		)
-		this.instance.interceptors.response.use(
+		this.instance?.interceptors.response.use(
 			(res) => {
 				return res
 			},
