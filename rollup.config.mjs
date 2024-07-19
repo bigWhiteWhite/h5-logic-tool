@@ -4,12 +4,14 @@ import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
 import alias from '@rollup/plugin-alias'
+import multi from '@rollup/plugin-multi-entry'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import builtins from 'rollup-plugin-node-builtins'
 import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
 import cleanup from 'rollup-plugin-cleanup'
 // https://www.rollupjs.com
+const input = ['src/index.ts', 'src/utils/**/*.ts'] //  ['src/index.ts']
 const plugins = [
 	// 帮助 Rollup解析 Node.js 模块,让 Rollup 可以找到并打包这些模块。
 	resolve({ mainFields: ['jsnext', 'preferBuiltins', 'browser'] }),
@@ -25,6 +27,9 @@ const plugins = [
 	builtins(),
 	cleanup(),
 	sourcemaps(),
+	multi({
+		entryFileName: '[name].js'
+	}),
 	babel({
 		exclude: ['node_modules/**'],
 		babelHelpers: 'bundled'
@@ -38,21 +43,25 @@ const plugins = [
 ]
 export default defineConfig([
 	{
-		input: './src/index.ts',
+		input,
 		output: {
 			dir: 'dist',
 			format: 'cjs',
 			entryFileNames: '[name].cjs.js'
 		},
-		plugins
+		plugins: [
+			...plugins,
+		]
 	},
 	{
-		input: './src/index.ts',
+		input,
 		output: {
 			dir: 'dist',
 			format: 'esm',
 			entryFileNames: '[name].esm.js'
 		},
-		plugins
+		plugins: [
+			...plugins,
+		]
 	}
 ])
