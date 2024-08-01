@@ -18,20 +18,7 @@ class Request {
 		// 全局通用的拦截器,每一个实例都有
 		this.instance?.interceptors.request.use(
 			(config) => {
-				return {
-					...config,
-					baseURL: '/guidance',
-					headers: {
-						ProxyChannel: 'H5',
-						App_id: 'com.si.ci.xx.qq',
-						'Accept-Language': 'en',
-						'Content-Type': 'application/json',
-						'X-Requested-With': null
-						// App_version: userParams.value.appVersion || userParams.value.App_version || '',
-						// App_id: userParams.value.appId || userParams.value.App_id || id || '',
-						// Authorization: authorization || Authorization || ''
-					}
-				}
+				return config
 			},
 			(err) => {
 				return err
