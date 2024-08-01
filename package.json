@@ -19,8 +19,9 @@
 		"build:dev": "pnpm run build:types && pnpm run build:rollup-dev",
 		"build:prod": "pnpm run build:types && pnpm run build:rollup-prod",
 		"lint": "eslint 'src/**/*.{js,ts}'",
-		"prettier": "prettier --write 'src/**/*.{js,ts,json,css}'",
-		"test": "jest index.test",
+		"prettier": "prettier --write 'src/**/*.{js,ts,json}'",
+		"test": "jest common/init.test",
+		"test:devices": "jest common/devices/index.test",
 		"test:coveralls": "jest --coverage"
 	},
 	"repository": {
@@ -61,6 +62,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^29.7.0",
 		"prettier": "^3.3.3",
 		"rimraf": "^6.0.1",
 		"rollup": "^4.18.1",
