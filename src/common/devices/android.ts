@@ -48,7 +48,7 @@ export class ClientAdapter {
 	 */
 	postMessage(name: keyof AppMethodMapping) {
 		const key = this.getMethod(name)
-		if (typeof key === 'string') {
+		if (typeof key === 'string' && Reflect.has(this.appBridge, key)) {
 			return this.appBridge[key]()
 		} else {
 			console.error(`android方法映射${this.clientName}不存在${key}!`)
@@ -92,6 +92,30 @@ export class ClientAdapter {
 
 	/**
 	 * Call a method without any parameters.
+	 * @description 还款方式页获取支付金额，需要转换为Number
+	 */
+	getRepayAmount() {
+		const key = this.getMethod('repayAmount')
+		if (typeof key === 'string') return Number(this.appBridge[key]())
+		else return 0
+	}
+
+	getRepayParams() {
+		console.log('before')
+		const isExtendRepay = this.postMessage('isExtend') || false
+		const extendDays = this.postMessage('extendDays') || ''
+		const fetchCouponId = this.postMessage('fetchCouponId') || ''
+		return {
+			payAmount: this.getRepayAmount(),
+			paymentId: this.getPaymentId(),
+			isExtendRepay,
+			extendDays,
+			fetchCouponId
+		}
+	}
+
+	/**
+	 * Call a method without any parameters.
 	 * @description 关闭当前webview,需要兼容common-h5的方式去关闭当前webview
 	 */
 	closeWebView() {
@@ -102,16 +126,6 @@ export class ClientAdapter {
 		} else if (typeof oldMethod === 'string') {
 			return this.appBridge[oldMethod]()
 		}
-	}
-
-	/**
-	 * Call a method without any parameters.
-	 * @description 还款方式页获取支付金额，需要转换为Number
-	 */
-	getRepayAmount() {
-		const key = this.getMethod('repayAmount')
-		if (typeof key === 'string') return Number(this.appBridge[key]())
-		else return 0
 	}
 
 	/**

@@ -98,4 +98,23 @@ export class DeviceInit {
 			}
 		})
 	}
+	// 初始化获取还款参数
+	getRepayParams() {
+		return new Promise((resolve) => {
+			if (this.deviceType === 0) {
+				const repayParams = window.clientH5.getRepayParams()
+				console.log('🚀 ~ DeviceInit ~ returnnewPromise ~ repayParams:', repayParams)
+				if (repayParams) {
+					resolve({ repayParams })
+				}
+			} else {
+				const name: string = window.clientH5.postMessage('getRepayParams')
+				if (name) {
+					window[name] = (repayParams: string) => {
+						resolve({ repayParams: repayParams ? JSON.parse(repayParams) : null })
+					}
+				}
+			}
+		})
+	}
 }

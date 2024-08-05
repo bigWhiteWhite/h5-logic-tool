@@ -4,6 +4,7 @@ interface CustomWindow extends Window {
 	testDevices: any
 	appCountry: any
 	reqHeaders: any
+	getRepayParams: any
 	language: any
 }
 declare let window: CustomWindow
@@ -23,6 +24,12 @@ beforeAll(() => {
 		},
 		language: () => {
 			return 'es'
+		},
+		paymentId: () => {
+			return 'paymentId'
+		},
+		repayAmount: () => {
+			return '12800'
 		},
 		postMessage: (key: string) => {
 			if (key === 'appCountry') {
@@ -46,14 +53,29 @@ beforeAll(() => {
 					window.language('es')
 				}, 1000)
 			}
+			if (key === 'getRepayParams') {
+				setTimeout(() => {
+					window.getRepayParams(
+						JSON.stringify({
+							fetchCouponId: '',
+							payAmount: 390,
+							isExtendRepay: false,
+							paymentId: 'P09744daed52b6000',
+							extendDays: '10',
+							overDueDays: 12,
+							dueDate: '2022-08-16'
+						})
+					)
+				}, 1000)
+			}
 		}
 	}
 })
 describe('Init Devices', () => {
 	it('init Devices', async () => {
-		const app = new DeviceInit(1, 'testDevices', {})
+		const app = new DeviceInit(0, 'testDevices', {})
 		app
-			.initApp(['appCountry', 'reqHeaders', 'language'])
+			.initApp(['appCountry', 'reqHeaders', 'language', 'getRepayParams'])
 			.then((results) => {
 				console.log('All methods have been called', results)
 			})
